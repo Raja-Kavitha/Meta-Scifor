@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Resizer</title>
+    <style>
+        html, body {
+            margin: 0; /* Removes default margin */
+            padding: 0; /* Removes default padding */
+            box-sizing: border-box; /* Ensures consistent box-sizing */
+        }
+
+        nav {
+            background-color:#083968fd;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content:center;
+            padding: 0 2px;
+            position: fixed; /* Keeps navbar at the top */
+            top: 0;
+            width: 100%;
+            z-index: 1000; /* Ensures it stays above other elements */
+        }
+
+        nav h3 {
+            margin: 0;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            padding: 10px ; 
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px; 
+        }
+
+        nav a:hover {
+            background-color:darkcyan;
+            border-radius: 25px;
+        }
+
+        body h1 {
+            background-color: darkcyan;
+            color: white;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            margin-top: 80px; 
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: whitesmoke;
+        }
+
+        form {
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid darkgrey;
+            display: inline-block;
+            border-radius: 30px;
+            background-color: #f9f9f9; /* Light background for contrast */
+            box-shadow: 10px 10px 10px 10px darkgrey;
+
+        }
+
+        input, button {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 35px;
+            border: 1px solid #ccc;
+        }
+        button {
+                    background-color: darkcyan;
+                    color: white;
+                    padding: 10px 20px;
+                    font-size: 16px;
+                    border: none;
+                    border-radius: 30px;
+                    cursor: pointer;
+                    transition: transform 0.3s ease, background-color 0.3s ease;
+                }
+
+         button:hover {
+                    transform: translateY(-5px); /* Moves button upward */
+                    background-color: #083968fd; /* Changes background color */
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column; /* Stack elements vertically */
+                align-items: center;
+            }
+
+            nav a {
+                margin: 5px 0; /* Adds spacing between links */
+            }
+
+            form {
+                width: 90%;
+            }
+        }
+        ul {
+            list-style-type:disc; /* Default bullets */
+            margin: 0;            /* Remove default margin */
+            padding: 0;           /* Remove default padding */
+            padding-left: 20px;   /* Align bullets with content */
+            text-align: left;     /* Ensure content aligns left */
+        }
+
+        li {
+            font-size: 18px;      /* Font size for the list items */
+            margin: 10px 0;       /* Add space between items */
+            line-height: 1.5;     /* Improve readability */
+        }
+        footer {
+            background-color:#083968fd;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+    </style>   
+</head>
+<body>
+
+    <nav>
+        <h3>Re-Shape It</h3>&nbsp;&nbsp;&nbsp;&nbsp;
+        <div>
+            <a href="#resize">Resize</a>
+            <a href="#convert">Convert</a>
+            <a href="#pdf-maker">PDF Maker</a>
+    </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Image Resizer</h1>
+            </div>
+            <div class="col-4">
+                <ul>
+                    <li>You can resize multiple images</li>
+                    <li>Enter width and height</li>
+                    <li>Press the button to resize it</li>
+                </ul>
+            </div>
+            <div class="col-8">
+                <form action="/resize" method="post" enctype="multipart/form-data" id="resize">
+                    <label for="images">Upload images:</label>
+                    <input type="file" name="images" id="images" multiple><br>
+                    <label for="width">New Width:</label>
+                    <input type="number" name="width" id="width" required><br>
+                    <label for="height">New Height:</label>
+                    <input type="number" name="height" id="height" required><br>
+                    <button type="submit">Resize </button>
+                </form>
+                <br>
+                <br>
+            </div>   
+        </div>
+    </div>
+    
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+              <h1>Convert Image Format</h1>
+            </div>
+
+            <div class="col-4">
+                <ul>
+                    <li>You can convert the images format</li>
+                    <li>You can convert Word file to PDF</li>
+                    <li>Press the button to convert it</li>
+                </ul>
+            </div>
+            <div class="col-8">
+                <form action="/convert_format" method="POST" enctype="multipart/form-data" id="convert">
+                    <label for="file">Select Image:</label>
+                    <input type="file" id="file" name="file" accept="image/*" required>
+                    <br>
+                    <label for="format">Convert to:</label>
+                    
+                    <select id="format" name="format" required>
+                        <option value="jpg">JPG</option>
+                        <option value="png">PNG</option>
+                        <option value="bmp">BMP</option>
+                        <option value="gif">GIF</option>
+                        <option value="pdf">PDF</option>
+
+                    </select> &nbsp; &nbsp;
+                    <button type="submit">Convert</button>
+                </form>
+            </div>   
+        </div>
+    </div>
+   
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Convert Images to PDF</h1>
+            </div>
+            <div class="col-4">
+                <ul>
+                    <li>You can convert multiple images to PDF</li>
+                    <li>Press the button to convert it</li>
+                </ul>
+            </div>
+            <div class="col-8">
+                <form action="/convert_pdf" method="POST" enctype="multipart/form-data" id="pdf-maker">
+                    <label for="files">Select Images:</label>
+                    <input type="file" name="files" id="files" multiple accept="image/*" required><br>
+                    <button type="submit">Convert to PDF</button>
+                </form>
+            </div>
+        </div>       
+    </div>
+    
+</body><br>
+<br>
+<footer>
+    <p>&copy; 2024 Kavi. All rights reserved.</p>
+</footer>
+</html>

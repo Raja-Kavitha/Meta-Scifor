@@ -1,0 +1,39 @@
+{% extends "myapp/layouts/main.html" %}
+
+{% block title%}
+  Reviews.in | Add Review
+{%endblock title %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Review</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center" style="color: azure;" >Add a Review for "{{ book.title }}"</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="rating">Rating (1-5):</label>
+                <input type="number" id="rating" name="rating" class="form-control" min="1" max="5" required>
+            </div>
+            <div class="form-group">
+                <label for="comment">Your Review:</label>
+                <textarea id="comment" name="comment" class="form-control" rows="5" placeholder="Write your review here..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Review</button>
+            <a href="{% url 'book_detail' book.id %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+{% endblock %}

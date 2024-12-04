@@ -1,0 +1,49 @@
+{% extends 'myapp/layouts/main.html' %}
+
+{% block title %}
+  Reviews.in | Wishlist
+{% endblock title %}
+
+{% block content %}
+<section class="bg-light py-4 my-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="mb-3">Wishlist</h4>
+                <hr style="border-color: aliceblue;">
+            </div>
+            
+            {% if wish %}
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Book Image</th>
+                            <th>Book Name</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in wish %}
+                            <tr>
+                                <td><img src="{{ item.book.image.url }}" height="75px" alt="{{ item.book.title }}"></td>
+                                <td>{{ item.book.title }}</td>
+                                <td>
+                                    <a href="{% url 'remove_wishlist' item.id %}" 
+                                       onclick="return confirm('Are you sure you want to remove this item from your Wishlist?')" 
+                                       class="btn btn-danger btn-sm">
+                                       <i class="fa fa-trash"></i> Remove
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div class="col-12">
+                    <p class="text-center">Your wishlist is empty!</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock content %}

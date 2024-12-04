@@ -1,0 +1,54 @@
+{% extends 'myapp/layouts/main.html' %}
+
+{% block title%}
+  Shop Cart| Online Shopping
+{%endblock title %}
+
+{% block content %}
+{% include 'myapp/inc/slider.html'%}
+<section>
+  <div class="py-5 text-center container" >
+      <div class="row py-lg-5">
+          <div class="col-lg-6 col-md-8 mx-auto">
+              <h1 class="fwlight">Bestsellers</h1>
+              <p class ='lead text-muted'>Our most popular based on sales. Updated daily.</p>
+              <p>
+                  <a href="{% url 'login' %}" class="btn btn-primary my-2">Existing User</a>
+                  <a href="{% url 'register' %}" class="btn btn-secondary my-2">New User</a>
+              </p>
+          </div>
+      </div>
+  </div>        
+</section>
+
+<section class="bg-light py-4 my-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>Trending Products</h1>
+      </div>
+    </div>
+    <div class="row">
+      {% for item in products %}
+      <div class="col-md-4 col-lg-3">
+        <div class="card my-3">
+          <img src="{{ item.product_image.url }}" class="card-img-top" alt="Categories" width="180px" height="180px">
+          <a href="{% url 'product_details' item.category.name item.name %}">
+            <div class="card-body">
+              <h5 class="card-title text-primary">{{ item.name }}</h5>
+              <p class="card-text">
+                <span class="float-start old_price"><s>Rs.{{ item.original_price|stringformat:'d' }}</s></span>
+                <span class="float-end new_price">Rs.{{ item.selling_price|stringformat:'d' }}</span>
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock content %}
+
+ 

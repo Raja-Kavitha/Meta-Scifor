@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {%load static%}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'my_blogs/styles.css' %}">
+
+</head>
+<body>
+    <header>
+    </header>
+    <div class="container">
+        {%for i in blogs%}
+        <div>
+            <h2>{{ i.title}}</h2>
+            <p>Essay: {{i.content}}</p>
+            <p>written by {{i.writer}} on {{i.date}}</p>
+            <hr>
+        </div>
+        {%endfor%}
+        
+    </div>
+</body>
+<footer>
+    <p>&copy; 2024 Kavi. All rights reserved.</p>
+</footer>
+</html>

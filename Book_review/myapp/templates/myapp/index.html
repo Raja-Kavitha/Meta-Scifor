@@ -1,0 +1,29 @@
+{% extends 'myapp/layouts/main.html' %}
+
+{% block title%}
+  Reviews.in | Home
+  
+{%endblock title %}
+
+{% block content %}
+<style>
+    body{
+        padding-top: 130px;
+    }
+</style>
+<section>
+    <div class="py-5 text-center container" >
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fwlight" style="color: azure;" >Welcome to Review.in</h1>
+                <p class ='lead text-muted'>.</p>
+                <p>
+                    <a href="{% url 'login_page' %}" class="btn btn-primary my-2">Existing User</a>&nbsp;&nbsp;
+                    <a href="{% url 'register' %}" class="btn btn-secondary my-2">New User</a>
+                </p>
+            </div>
+        </div>
+    </div>        
+</section>
+{% endblock content %}
+

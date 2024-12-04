@@ -1,0 +1,142 @@
+{% extends "myapp/layouts/main.html" %}
+
+{% block title%}
+  Reviews.in | Reviews
+{%endblock title %}
+
+{% block content %}
+<section class="bg-light py-4 my-5" style="min-height: 500px; align-items: center;" >
+    <div class="container" >
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'book_list' %}">Book List</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{book.title}}</li>
+            </ol>
+        </nav>
+        <h2>{{ book.title }}</h2>
+        
+        <p><h5>Author: {{ book.author }}</h5></p>
+ 
+    {% if book.image %}
+        <img src="{{ book.image.url }}" alt="{{ book.title }}" style="border: double; border-radius: 10px; width: 300px; height: 200px;">
+        <br>
+    {% else %}
+        <p>No image available for this book.</p>
+    {% endif %}
+        <br>
+        <h3>Reviews:</h3>
+        <ul>
+            {% for item in book.reviews.all %}
+                <li>
+                    <strong>{{ item.user.username }}</strong> rated it {{ item.rating }}/5
+                    <br>
+                    <br>
+                    <div class="review-content">
+                        <p class="review-text">
+                            {{ item.comment}} 
+                        </p>
+                        <br>
+                        <span class="like-button"><i class="far fa-heart" onclick="toggleLike(this)"></i></span>&nbsp;&nbsp;    
+                        <button class="btn btn-link read-more-btn">Read More</button></p>
+                    </div>
+                    
+                </li>
+                <br>
+            {% empty %}
+                <li>No reviews yet.</li>
+            {% endfor %}
+        </ul>
+
+        <a href="{% url 'add_review' book.id %}" class="btn btn-info">Add a Review</a>
+        <a href="{% url 'wish_page'  %}" class="btn btn-primary wishlist-btn" data-book-id="{{ book.id }}">Add to Wishlist</a>
+
+    </div>
+</section>
+
+<!-- JavaScript for Wishlist -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const wishlistButton = document.querySelector('.wishlist-btn');
+
+        if (wishlistButton) {
+            wishlistButton.addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent page redirection
+                
+                const bookId = wishlistButton.getAttribute('data-book-id');
+                const csrfToken = '{{ csrf_token }}'; // Ensure CSRF token is available for POST requests
+
+                fetch("/wish/", {
+                    method: 'POST',
+                    credentials: 'same-origin',
+                    headers: {
+                        'Accept': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest', // Necessary for identifying AJAX requests
+                        'X-CSRFToken': csrfToken,
+                    },
+                    body: JSON.stringify({ 'book_id': bookId }) // Sending book ID in the request
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'Product added to wishlist') {
+                            alert('Book added to your wishlist!');
+                        } else {
+                            alert(data.status);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error); // Log any errors for debugging
+                    });
+            });
+        }
+    });
+    
+    
+    document.addEventListener('DOMContentLoaded', function () {
+        const maxWords = 50; // Limit to 20 words
+
+        const reviews = document.querySelectorAll('.review-content');
+
+        reviews.forEach(review => {
+            const reviewText = review.querySelector('.review-text');
+            const originalText = reviewText.textContent.trim();
+            const truncatedText = originalText.split(' ').slice(0, maxWords).join(' ') + '...';
+
+            if (originalText.split(' ').length > maxWords) {
+                reviewText.textContent = truncatedText;
+
+                const button = review.querySelector('.read-more-btn');
+                button.style.display = 'inline'; // Show the button only if truncation occurs
+
+                button.addEventListener('click', function () {
+                    if (reviewText.textContent === truncatedText) {
+                        reviewText.textContent = originalText;
+                        button.textContent = 'Read Less';
+                    } else {
+                        reviewText.textContent = truncatedText;
+                        button.textContent = 'Read More';
+                    }
+                });
+            }
+        });
+    });
+    function toggleLike(element) {
+    // Check if the heart is currently liked
+    if (element.classList.contains('far')) {
+        element.classList.remove('far'); // Remove outline
+        element.classList.add('fas');   // Add solid
+        element.classList.add('liked'); // Add color
+        console.log("Liked!");
+    } else {
+        element.classList.remove('fas'); // Remove solid
+        element.classList.add('far');    // Add outline
+        element.classList.remove('liked'); // Remove color
+        console.log("Unliked!");
+    }
+}
+
+
+
+</script>
+
+{% endblock %}

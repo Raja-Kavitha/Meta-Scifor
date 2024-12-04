@@ -1,0 +1,39 @@
+{% extends 'myapp/layouts/main.html' %}
+
+{% block title%}
+    Reviews.in | Login
+{%endblock title %}
+
+{% block content%}
+<div class="container " style="margin-top: 30px;">
+    <div class="row">
+        <div class="col-12">
+            <h1 style="color: azure;">User Login</h1>
+            <br>
+
+        </div>
+    </div>
+    <section class="py-4 my-5">
+        <div class="container">
+           
+                <div class="col-6">
+                    <form method="post" action="{% url 'login_page' %}">
+                        {% csrf_token %}
+                        <div class="mb-4">
+                            Username: {{form.username}}
+                            <input type="text" name="username" id="username" class="form-control" placeholder="Enter name">
+                         </div>
+                         
+                         <div class="mb-4">
+                            Password: {{form.password1}}
+                            <input type="password" name="password" id="password" class="form-control" placeholder="Enter password">
+                         </div>
+                         <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+            
+        </div>
+
+    </section>
+</div>
+{% endblock content %}

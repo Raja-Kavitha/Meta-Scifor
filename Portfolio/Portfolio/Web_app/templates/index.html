@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h1>Hello!! This is <strong>Raja Kavitha</strong> </h1>
+        <p>I completed my UG degree in Computer Application.</p>
+        <p>I'm good at Python Programming!!</p>
+        <p>Welcome to my portfolio! I’m a passionate web developer who enjoys creating web applications and solving problems with code.</p>
+    </section>
+
+    <section id="projects">
+        <h2>My Projects</h2>
+        <div class="project-card">
+            <h3>Project 1</h3>
+            <p>Diamond Price Prediction using <strong>Python</strong></p>
+            
+        </div>
+        <div class="project-card">
+            <h3>Project 2</h3>
+            <p>Student Voting System using <strong>PHP</strong></p>
+        </div>
+        
+    </section>
+
+    <section id="skills">
+        <ul style="list-style-type: square;">
+            <li>Python</li>
+            <li>Html</li>
+            <li>CSS</li>
+            <li>MySQL</li>
+            <li>Data Visualisation</li>
+            <li>Data Preprocessing</li>
+            <li>Data Modeling</li>
+        </ul>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>If you'd like to work together or have any questions, feel free to contact me!</p>
+        <a href="mailto:rrkavi@gmail.com" class="contact-button">Email Me</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Kavi. All rights reserved.</p>
+    </footer>
+</body>
+</html>

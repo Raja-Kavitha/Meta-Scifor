@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Generator</title>
+    <link rel="stylesheet" href="{% static 'quotes/styles.css' %}">
+
+</head>
+<body>
+    <div class="container">
+        <h1> Quote Engine</h1>
+        <div id="quoteDisplay" class="quote-display"></div>
+        <button id="newQuoteBtn">Next quote</button>
+    </div>
+    <script src="{% static 'quotes/script.js' %}"></script>
+
+</body>
+</html>

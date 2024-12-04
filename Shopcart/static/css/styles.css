@@ -1,0 +1,85 @@
+.carousel-inner img{
+    object-fit: cover;
+    object-position: top;
+    height: 60vh;
+    overflow: hidden;
+}
+html{
+    font-size: 14px;
+}
+body{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+a{
+    text-decoration: none;
+}
+.old_price{
+    font-weight: bold;
+    color: red;
+}
+.new_price{
+    font-weight: bold;
+    background-color: green;
+    color: white;
+    padding:2px;
+    padding-bottom: 4px;
+    border-radius: 5px;
+}
+/* CSS for Footer */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 0;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    object-fit: cover;
+}
+
+.footer-content h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.footer-content p {
+    font-size: 14px;
+    margin: 0 0 20px;
+}
+
+.footer .socials {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer .socials li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.footer .socials a {
+    color: #fff;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.footer-bottom {
+    padding: 20px 0 0;
+    font-size: 12px;
+    border-top: 1px solid #555;
+    margin-top: 20px;
+}
+.pic-box{
+    position: relative;
+}
+.best{
+    background-color: red;
+    color:white;
+    border-width: 60px;
+    text-align: center;
+    position: absolute;
+    font-weight: bold;
+    border-radius: 10px;
+    display: inline;
+    padding: 5px;
+    top: 0;
+    left:3px;
+}

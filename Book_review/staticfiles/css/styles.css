@@ -1,0 +1,187 @@
+
+/* General Reset */
+body, h1, h2, h3, p, ul, li, a {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    
+}
+
+/* Body and General Layout */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+    padding-top: 60px; /* To accommodate fixed navbar */
+    background-image:url('books.jpeg');
+    background-size: cover;
+}
+
+/* Header Styles */
+header {
+    background-color: #343a40;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+header nav a {
+    color: #fff;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #343a40;
+}
+
+.navbar-brand, .nav-link {
+    color: #fff !important;
+    margin-right: 15px;
+}
+
+.nav-link:hover {
+    color: #ffc107 !important;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%288,8,8,0.5%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Main Content */
+main {
+    padding: 20px;
+    background: #fff;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #343a40;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Typography */
+h2 {
+    font-size: 1.8rem;
+    color: #343a40;
+    margin-bottom: 15px;
+}
+
+p, li {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Lists */
+ul {
+    padding: 0;
+    margin: 10px 0;
+}
+
+ul li {
+    padding: 5px 0;
+}
+
+/* Forms */
+form {
+    background: #f1f1f1;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+form input, form textarea, form button {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+form button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Reviews Section */
+ul li strong {
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+    }
+
+    main {
+        padding: 15px;
+        margin: 10px;
+    }
+}
+.card:hover{
+   background-color: #333;
+
+}
+.review-text {
+    display: -webkit-box;
+    
+    -webkit-box-orient: vertical;
+    overflow: visible;
+    text-overflow: unset;
+    max-height: none; 
+    transition: max-height 0.3s ease;
+}
+
+.review-text.expanded {
+    max-height: none; 
+    text-overflow:ellipsis;
+}
+.like-button i {
+    font-size: 20px;
+    color: gray;
+    cursor: pointer;
+    /* transition: color 0.3s; */
+}
+
+.like-button i.liked {
+    color: red;
+}
+
+
+

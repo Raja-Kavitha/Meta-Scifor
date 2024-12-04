@@ -1,0 +1,39 @@
+{% extends 'myapp/layouts/main.html' %}
+
+{% block title%}
+    Reviews.in | Book Details
+{%endblock title %}
+
+{% block content %}
+<div class="container " style="margin-top:40px;">
+    <section class="bg-light py-4 my-5" style="min-height: 10px; border-radius: 20px; margin-left: 15px;">
+        <div class="container" style="margin-left: 45px;">
+           <div class="row">
+               <div class="col-12">
+                   <h4 class="mb-3">{{book.title}} Details</h4>
+                </div>
+                <div class="col-4 my-3">
+                     <img src="{{ book.image.url }}" width="300px"   style="border-radius: 20px;"   class="card-image-top" alt="{{products}}">
+                </div>
+                <div class="col-6 my-3">
+                    <p><b>Author: {{book.author}}</b></p>
+                    <p><b>Genre: {{ book.genre }}</b></p>
+                    <br>
+                    
+                    <p>Summary:<br>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{book.summary}}</p>
+                    
+                    
+                </div>
+                <div class="col-7 my-3">
+
+                    <a href="{% url 'book_review' book.id %}" class="btn btn-primary" >Go to Reviews</a>
+                    
+                </div>
+               
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock content %}
