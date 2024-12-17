@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+       a{
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            text-decoration: none;
+       }
+       .btn{
+            
+            animation: float 3s ease-in-out infinite;
+
+               
+       }
+       @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="banner-section bg-light py-5" style="display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(to top, #4b026d, #5f3e6e, #736a77); height: 100vh; color: beige; ">
+        <div class="container text-center" style="max-width: 600px; background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 15px; padding: 30px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
+            <h1 style="font-family: 'Arial', sans-serif; font-weight: 700; font-size: 2.5rem; margin-bottom: 20px; letter-spacing: 1px;">Welcome to the Image Gallery</h1>
+                <p style="font-size: 1.1rem;  margin-bottom: 30px; font-style: italic; text-align: center;">Your one-stop platform to save, shape, and share memories.</p>
+                <div class="row py-lg-5" style="display: flex; justify-content: center; gap: 20px;">
+                    <a href="{% url 'login_page' %}" 
+                        class="btn btn-primary btn-lg mx-2" 
+                        style="padding: 12px 30px; font-size: 18px; background-color: #3d3d39;  border-color: #007bff; color:aliceblue; border-radius: 25px; text-transform: uppercase; transition: all 0.3s ease;">
+                        Login
+                    </a>
+                    <a href="{% url 'register' %}" 
+                        class="btn btn-secondary btn-lg mx-2" 
+                        style="padding: 12px 30px; font-size: 18px; background-color: #3d3d39; color:aliceblue; border-color: #6c757d; border-radius: 25px; text-transform: uppercase; transition: all 0.3s ease;">
+                        Sign-Up
+                    </a>
+                </div>
+        </div>        
+    </section> 
+</body>
+</html>
+

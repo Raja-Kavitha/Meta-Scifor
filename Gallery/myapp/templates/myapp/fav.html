@@ -1,0 +1,39 @@
+{% extends 'myapp/layout/main.html' %}
+
+{% block title %}
+    Favourites
+{% endblock title %}
+
+{% block content %}
+<style>
+    .card{
+        transition: transform .2s; 
+    }
+    .card:hover{
+        transform: scale(1.1);
+    }
+</style>
+<h2 style="margin-top: 65px; text-align: center; margin-left: 20px;">Your Favorites</h2>
+<div class="row" style="margin-left: 20px; margin-right: 20px;">
+    {% if favorites %}
+        {% for favorite in favorites %}
+            <div class="col-md-4 col-lg-3" style="margin-top: 55px;">
+                <div class="card my-3" style=" border-radius: 20px;">
+                    <img src="{{ favorite.image.image.url }}" alt="{{ favorite.image.title }}" class="gallery-image" style="border-radius: 20px;width: 275px; height: 200px;">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">{{ favorite.image.title }}</h5>
+                        <a href="{% url 'remove_fav' favorite.id %}" 
+                        onclick="return confirm('Are you sure you want to remove this image from favorites?')" 
+                        class="btn btn-danger btn-sm">
+                        <i class="fa fa-trash"></i> Remove
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h4 style="margin-top: 50px; text-align: center;">No images added to Favorites :(</h4>
+    {% endif %}
+</div>
+{% endblock content%}
+    

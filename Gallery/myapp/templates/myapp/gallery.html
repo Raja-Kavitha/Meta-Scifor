@@ -1,0 +1,46 @@
+{% extends 'myapp/layout/main.html' %}
+
+{% block title %}
+    Gallery
+{% endblock title %}
+
+{% block content %}
+<style>
+    .card{
+        transition: transform .2s;
+    }
+    .card:hover{
+        transform: scale(1.1);
+    }
+</style>
+<section>
+    <div class="container py-5">
+        <br>
+      <h2 class="text-center mb-4">Gallery</h2>
+      <a href="{% url 'create_album' %}" class="btn btn-info d-inline-flex align-items-center"
+       style="margin-right: 20px ; gap: 5px;">
+        <i class="fa fa-plus me-2"></i>Create Album
+    </a>      
+    <br>
+    <br>
+    <div class="row">
+        {% for album in album %}
+                <div class="col-md-4 mb-3">
+                    <div class="card" style="border-radius: 20px;">
+                        {% if album.cover_image %}
+                            <img src="{{ album.cover_image.url }}" class="card-img-top" alt="{{ album.name }}" style="height: 200px; border-radius: 20px;">
+                        {% else %}
+                            <img src="/albums/logo.jpeg" alt="Default image">
+                        {% endif %}
+                        <div class="card-body">
+                            <a href="{% url 'galleryview' album.id %}" style="text-decoration: none;"> {{album.name}}</a>
+                            <p class="card-text">{{ album.description }}</p>
+                            
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endblock content %}

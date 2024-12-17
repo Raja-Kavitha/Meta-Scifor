@@ -1,0 +1,32 @@
+{% extends 'myapp/layout/main.html' %}
+
+{% block title %}
+    Profile | {{request.user}}
+{% endblock title %}
+
+{% block content %}
+<style>
+  .btn-warning:hover{
+    transform: translateY(-10px);
+  }
+</style>
+<div class="profile-container" style="margin-top: 75px; display: flex; justify-content: center; gap: 20px; padding: 20px; border: 1px solid #ddd; border-radius: 10px; background-color: #f9f9f9; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+    <div class="profile-pic" style="flex-shrink: 0;">
+      <img src="{{ profile.profile_pic.url }}" alt="{{ profile.user.username }}'s Profile" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover;">
+    </div>
+    <div class="profile-info" style="display: flex; flex-direction: column; justify-content: center;">
+      <h3 style="font-size: 24px; margin-bottom: 10px;">{{ profile.user.username }}</h3>
+      <p style="margin: 5px 0;"><strong>Bio:</strong> {{ profile.bio }}</p>
+      <p style="margin: 5px 0;"><strong>Albums Created:</strong> {{ profile.album_count }}</p>
+      <p style="margin: 5px 0;"><strong>Album Names:</strong>
+        <ul style="list-style: disc; margin-left: 20px; padding-left: 0;">
+          {% for album in profile.album_names %}
+            <li style="margin: 5px 0;">{{ album }}</li>
+          {% endfor %}
+        </ul>
+      </p>
+      <a href="{% url 'edit_profile' %}" class="btn btn-warning" style="margin-top: 15px; padding: 10px 15px; background-color: #ffc107; color: #000; text-decoration: none; border-radius: 5px; display: inline-block; text-align: center; ">Edit Profile</a>
+    </div>
+  </div>
+  
+{% endblock %}

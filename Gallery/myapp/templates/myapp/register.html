@@ -1,0 +1,60 @@
+{% extends 'myapp/layout/main.html' %}
+
+{% block title%}
+  Registration
+{%endblock title %}
+
+{% block content %}
+<div class="container w-100" style="margin-top: 60px; background-color: black; color: aliceblue; ">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 class="mb-4">Sign-Up</h1>
+            {% include 'myapp/inc/messages.html'%}
+        </div>
+    </div>
+    <section class="py-4 my-5">
+        <div class="container" style="color: black;">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <form method="post" action="" class="shadow-lg p-4 bg-white rounded">
+                        {% csrf_token %}
+
+                        <!-- Username -->
+                        <div class="mb-3">
+                            <label for="id_username" class="form-label">Username</label>
+                            {{ form.username }}
+                            {% if form.errors.username %}
+                                <small class="text-danger">{{ form.errors.username }}</small>
+                            {% endif %}
+                        </div>
+
+                        <!-- Password -->
+                        <div class="mb-3">
+                            <label for="id_password1" class="form-label">Password</label>
+                            {{ form.password1 }}
+                            {% if form.errors.password1 %}
+                                <small class="text-danger">{{ form.errors.password1 }}</small>
+                            {% endif %}
+                        </div>
+
+                        <!-- Confirm Password -->
+                        <div class="mb-3">
+                            <label for="id_password2" class="form-label">Confirm Password</label>
+                            {{ form.password2 }}
+                            {% if form.errors.password2 %}
+                                <small class="text-danger">{{ form.errors.password2 }}</small>
+                            {% endif %}
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Register</button>
+                    </form>
+                    <p class="text-center mt-3" style="color: white ;">
+                        Already have an account? <a href="{% url 'login_page' %}" class="text-decoration-none">Login</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock content %}
+

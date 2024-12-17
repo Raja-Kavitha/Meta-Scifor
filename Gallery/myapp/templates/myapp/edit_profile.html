@@ -1,0 +1,17 @@
+{% extends 'myapp/layout/main.html' %}
+
+{% block title %}
+    Edit Profile | {{request.user}}
+{% endblock title %}
+
+{% block content %}
+<h2 style="text-align: center; margin-top: 65px;">Edit Profile</h2>
+<div class="container" style="margin-top: 70px; display: flex; justify-content: center;">
+    
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success w-100">Save Changes</button>
+    </form>
+</div>
+{% endblock %}
